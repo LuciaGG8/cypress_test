@@ -1,13 +1,14 @@
 /// <reference types="cypress" />
-import {MainPage} from '../page-objects/main'
-import {LoginPage} from '../page-objects/login'
-import {WelcomePage} from '../page-objects/welcome'
+
+import {MainPage} from './main'
+import {LoginPage} from './login'
+import {WelcomePage} from './welcome'
 
 
 describe('TESTS DE LOGIN', () => {
   const loginPage = new LoginPage()
   const mainPage = new MainPage()
-  const welcome = new WelcomePage()
+  const welcomePage = new WelcomePage()
 
 
   beforeEach(() => {
@@ -19,6 +20,7 @@ describe('TESTS DE LOGIN', () => {
      })
 
   it ('A valid user can login', () =>{
+    
     loginPage.fillUser("tomsmith")
     loginPage.fillPass("SuperSecretPassword!")
     loginPage.clickButtonLogin()
@@ -36,7 +38,6 @@ describe('TESTS DE LOGIN', () => {
     cy.get('#flash').contains("Your password is invalid!")
   
     })
-
    
   it('A invalid usename cannot login', () =>{
 
